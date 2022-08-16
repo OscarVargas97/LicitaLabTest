@@ -1,10 +1,10 @@
-Prueba Tecnica LicitaLab
+# Prueba Tecnica LicitaLab
 
 Gracias por postular a la oferta por el puesto de trabajo de Desarrollador Full Stack.
 La siguiente prueba servirá para medir sus conocimientos en términos de las tecnologías
 solicitadas como requisito para postular a este puesto de trabajo.
 
-Introducción
+## Introducción
 A diario tenemos un montón de cosas por hacer, y qué mejor que hacer una lista de
 autocompromisos que se adquieren para las tareas que nos faltan por hacer en el menester
 diario.
@@ -16,7 +16,7 @@ supuesto, el usuario podrá ordenar y filtrar tareas según fecha o contenido en
 descripción.
 La aplicación debe tener un aspecto como el siguiente:
 
-Requisitos
+## Requisitos
 La aplicación DEBE ser construida en su Front-end con el framework React.js
 (https://reactjs.org/), ademas, cada pieza que el postulante identifique que se pueda
 construir como un componente, debe entonces mostrarse como tal a nivel de código. Se le
@@ -32,7 +32,7 @@ desarrollador entregar todas las instrucciones para que su repositorio pueda ser
 ejecutado para evaluación; si no se puede ejecutar su trabajo, se considerará como no
 entregado.
 
-Aspectos para evaluar.
+## Aspectos para evaluar.
 Se tendrá en cuenta la ubicación de los objetos, textos e iconos que se muestran en el
 mockup entregado. El estilo de colores, fuentes e iconos no será evaluado, pero le
 entregará un bonus al postulante.

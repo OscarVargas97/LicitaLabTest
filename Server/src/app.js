@@ -7,7 +7,7 @@ require('dotenv').config()
 const app = express()
 
 // settings
-app.set('port', process.env.PORT || 3000)
+app.set('port', process.env.PORT || 4000)
 
 // Middleware
 app.use(morgan('dev'))

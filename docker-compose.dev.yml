@@ -1,0 +1,15 @@
+---
+version: '3.8'
+services:
+  Nodejs:
+    ports:
+      - target: 4000
+        published: ${DD_PORT:-4000}
+        protocol: tcp
+        mode: host
+    volumes:
+      - ./Server/src/:/myapp/src:z
+  React:
+    volumes:
+      - ./Client/src/:/myapp/src:z
+      - ./Client/public/:/myapp/public:z
