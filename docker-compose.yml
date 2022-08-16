@@ -8,6 +8,8 @@ services:
     image: "react-todo"
     depends_on:
       - Nodejs
+    environment:
+      DD_DATABASE_URL: ${DD_DATABASE_URL}
     ports:
       - target: 3000
         published: ${DD_PORT:-3000}
