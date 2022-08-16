@@ -1,0 +1,15 @@
+---
+version: '3.8'
+services:
+  Nodejs:
+    build:
+      context: ./
+      dockerfile: Dockerfile.nodejs
+    image: "nodejs"
+    ports:
+      - target: 3000
+        published: ${DD_PORT:-4000}
+        protocol: tcp
+        mode: host
+    env_file:
+      - .env

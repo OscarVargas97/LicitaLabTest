@@ -1,0 +1,6 @@
+---
+version: '3.8'
+services:
+  Nodejs:
+    volumes:
+      - ./Server/src/:/myapp/src:z
