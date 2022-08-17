@@ -8,8 +8,6 @@ services:
     image: "react-todo"
     depends_on:
       - Nodejs
-    environment:
-      DD_DATABASE_URL: ${DD_DATABASE_URL}
     ports:
       - target: 3000
         published: ${DD_PORT:-3000}
@@ -20,8 +18,12 @@ services:
       context: ./
       dockerfile: Dockerfile.nodejs
     image: "nodejs-todo"
+    environment:
+      DD_DATABASE_URL: ${DD_DATABASE_URL}
     env_file:
       - .env
+    links:
+      - mysql
   mysql:
     image: mysql:5.7.37@sha256:66d52e6baa8093820c09fec56992a5ee734f17e9fad8ef5ffc31597b231bd048
     environment:
