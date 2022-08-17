@@ -4,3 +4,4 @@ services:
   Nodejs:
     build:
       target: production
+      environment:

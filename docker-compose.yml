@@ -5,6 +5,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.react
+    container_name: react
     image: "react-todo"
     depends_on:
       - Nodejs
@@ -17,6 +18,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.nodejs
+    container_name: nodejs
     image: "nodejs-todo"
     environment:
       DD_DATABASE_URL: ${DD_DATABASE_URL}
@@ -26,8 +28,9 @@ services:
       - mysql
   mysql:
     image: mysql:5.7.37@sha256:66d52e6baa8093820c09fec56992a5ee734f17e9fad8ef5ffc31597b231bd048
+    container_name: mysql
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWOR: ${MYSQL_ROOT_PASSWOR}
       MYSQL_DATABASE: ${DD_DATABASE_NAME}
       MYSQL_USER: ${DD_DATABASE_USER}
       MYSQL_PASSWORD: ${DD_DATABASE_PASSWORD}

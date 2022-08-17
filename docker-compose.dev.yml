@@ -11,8 +11,20 @@ services:
         mode: host
     volumes:
       - ./Server/src/:/myapp/src:z
-    command: [ "npm", "run", "dev" ]
   React:
+    build:
+      target: development
     volumes:
       - ./Client/src/:/myapp/src:z
       - ./Client/public/:/myapp/public:z
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    restart: always
+    ports:
+      - 8081:80

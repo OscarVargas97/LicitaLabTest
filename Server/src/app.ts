@@ -2,6 +2,7 @@ import express from 'express'
 import morgan from 'morgan'
 import * as dotenv from 'dotenv';
 import indexRoutes from './routes/index'
+import * as database from './db/database'
 
 // initializations
 const app = express()
@@ -14,6 +15,7 @@ app.use(morgan('dev'))
 app.use(express.json())
 
 // database
+database.connect()
 
 // Routes
 app.use('/api', indexRoutes)

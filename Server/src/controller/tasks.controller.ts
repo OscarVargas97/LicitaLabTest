@@ -1,7 +1,5 @@
 import { RequestHandler } from "express";
-import { where } from "sequelize/types";
-
-import { Task } from "../models/tasks.model"
+import Task from "../models/tasks.model";
 
 export const createTask: RequestHandler = async (req, res, _) => {
 	var task = await Task.create(...req.body)
@@ -21,7 +19,7 @@ export const deleteTask: RequestHandler = async (req, res, _) => {
 		.json({ message: "tarea eliminada correctamente", data: deletedTask })
 }
 
-export const getAllTask: RequestHandler = async (req, res, _) => {
+export const getAllTask: RequestHandler = async (_, res) => {
 	const allTask: Task[] = await Task.findAll()
 
 	return res
@@ -29,7 +27,7 @@ export const getAllTask: RequestHandler = async (req, res, _) => {
 		.json({ message: "Todas las tareas", data: allTask })
 }
 
-export const getTaskByID: RequestHandler = async (req, res, _) => {
+export const getTaskByID: RequestHandler = async (req, res) => {
 	const { id } = req.params;
 	const getTask: Task | null = await Task.findByPk(id)
 	return res
@@ -37,7 +35,7 @@ export const getTaskByID: RequestHandler = async (req, res, _) => {
 		.json({ message: "Tarea encontrada", data: getTask })
 }
 
-export const updateTask: RequestHandler = async (req, res, _) => {
+export const updateTask: RequestHandler = async (req, res) => {
 	const { id } = req.params;
 	await Task.update({ ...req.body }, { where: { id } })
 	const updatedTask: Task | null = await Task.findByPk(id)

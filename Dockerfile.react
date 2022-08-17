@@ -1,16 +1,20 @@
-FROM node:14-alpine AS development
+FROM node:14-alpine AS base
 ENV NODE_ENV development
-
 WORKDIR /myapp
-
 RUN apk apk update && apk upgrade && apk update
-
+##############################prod##############################
+FROM node:14-alpine AS production
 COPY Client/package.json .
 RUN yarn install
-
 COPY ./Client/src ./src
 COPY ./Client/public ./public
-
 EXPOSE 3000
-
+CMD [ "yarn", "start" ]
+##############################Dev##############################
+FROM node:14-alpine AS development
+COPY Client/package.json .
+RUN yarn install
+COPY ./Client/src ./src
+COPY ./Client/public ./public
+EXPOSE 3000
 CMD [ "yarn", "start" ]
