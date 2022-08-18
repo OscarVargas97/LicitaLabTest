@@ -9,7 +9,6 @@ COPY Server/. .
 FROM base as production
 RUN npm run tsc
 RUN rm -r ./src
-COPY Server/src/db/migrations ./build/db/migrations
 ENV NODE_ENV=production
 EXPOSE 3000
 CMD [ "node", "build/app.js" ]
