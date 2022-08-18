@@ -1,6 +1,8 @@
-import { DataTypes, Model, Optional } from 'sequelize'
+'use strict'
+import { DataTypes, Model, Optional } from 'sequelize';
 import { sequelizeConnection } from '../db/database'
-interface TaskAttributes {
+
+export interface TaskAttributes {
 	id: number;
 	name: string;
 	description?: string;
@@ -17,36 +19,32 @@ class Task extends Model<TaskAttributes, TaskInput> implements TaskAttributes {
 	public name!: string
 	public description!: string
 	public expiration!: Date
-
-	// timestamps!
 	public readonly createdAt!: Date;
 	public readonly updatedAt!: Date;
 	public readonly deletedAt!: Date;
 }
 
-Task.init(
-	{
-		id: {
-			type: DataTypes.INTEGER.UNSIGNED,
-			autoIncrement: true,
-			primaryKey: true,
-		},
-		name: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
-
-		description: {
-			type: DataTypes.TEXT
-		},
-		expiration: {
-			type: DataTypes.DATE
-		},
+Task.init({
+	id: {
+		type: DataTypes.INTEGER.UNSIGNED,
+		autoIncrement: true,
+		primaryKey: true,
 	},
-	{
-		timestamps: true,
-		sequelize: sequelizeConnection,
-		paranoid: true
-	});
+	name: {
+		type: DataTypes.STRING,
+		allowNull: false
+	},
+	description: {
+		type: DataTypes.TEXT
+	},
+	expiration: {
+		type: DataTypes.DATE
+	},
+}, {
+	timestamps: true,
+	sequelize: sequelizeConnection,
+	paranoid: true
+})
+
 
 export default Task

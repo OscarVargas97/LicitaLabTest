@@ -1,10 +1,18 @@
-import config from '../config/config';
-import { Sequelize } from 'sequelize'
+import { Sequelize } from 'sequelize-typescript'
 import '../models'
 
+//import config from '../../config'
+require('dotenv').config();
 
-export const sequelizeConnection = new Sequelize(config.DD_DATABASE_URL)
-
+export const sequelizeConnection = new Sequelize({
+	database: process.env.DD_DATABASE_NAME,
+	username: process.env.DD_DATABASE_USER,
+	host: process.env.DD_DATABASE_HOST,
+	password: process.env.DD_DATABASE_PASSWORD,
+	port: 3306,
+	dialect: 'mysql',
+	models: [__dirname + '/models'],
+});
 
 export const connect = async () => {
 	try {

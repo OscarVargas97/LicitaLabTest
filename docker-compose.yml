@@ -21,26 +21,24 @@ services:
     container_name: nodejs
     image: "nodejs-todo"
     environment:
-      DD_DATABASE_URL: ${DD_DATABASE_URL}
-    env_file:
-      - .env
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      DD_DATABASE_USER: ${DD_DATABASE_USER}
+      DD_DATABASE_HOST: ${DD_DATABASE_HOST}
+      DD_DATABASE_PASSWORD: ${DD_DATABASE_PASSWORD}
+      DD_DATABASE_DIALECT: ${DD_DATABASE_DIALECT}
     links:
       - mysql
   mysql:
     image: mysql:5.7.37@sha256:66d52e6baa8093820c09fec56992a5ee734f17e9fad8ef5ffc31597b231bd048
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWOR: ${MYSQL_ROOT_PASSWOR}
-      MYSQL_DATABASE: ${DD_DATABASE_NAME}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USER: ${DD_DATABASE_USER}
       MYSQL_PASSWORD: ${DD_DATABASE_PASSWORD}
+      DD_DATABASE_DIALECT: ${DD_DATABASE_DIALECT}
     command:
       [
         'mysqld',
         '--character-set-server=utf8mb4',
         '--collation-server=utf8mb4_unicode_ci'
       ]
-    volumes:
-      - todo_data:/var/lib/mysql
-volumes:
-  todo_data: {}

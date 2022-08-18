@@ -4,4 +4,15 @@ services:
   Nodejs:
     build:
       target: production
-      environment:
+    environment:
+      DD_DATABASE_NAME: ${DD_DATABASE_NAME}
+    command: npx sequelize db:migrate
+  mysql:
+    image: mysql:5.7.37@sha256:66d52e6baa8093820c09fec56992a5ee734f17e9fad8ef5ffc31597b231bd048
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: ${DD_DATABASE_NAME}
+    volumes:
+      - todo_data:/var/lib/mysql
+volumes:
+  todo_data: {}

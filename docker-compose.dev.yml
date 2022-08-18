@@ -9,14 +9,20 @@ services:
         published: ${DD_PORT:-4000}
         protocol: tcp
         mode: host
+    environment:
+      DD_DATABASE_NAME: ${DD_TEST_DATABASE_NAME}
     volumes:
-      - ./Server/src/:/myapp/src:z
+      - ./Server/:/myapp/:z
   React:
     build:
       target: development
     volumes:
-      - ./Client/src/:/myapp/src:z
-      - ./Client/public/:/myapp/public:z
+      - ./Client:/myapp:z
+  mysql:
+    environment:
+      MYSQL_DATABASE: ${DD_TEST_DATABASE_NAME}
+    volumes:
+      - todo_data_test:/var/lib/mysql
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: pma
@@ -28,3 +34,5 @@ services:
     restart: always
     ports:
       - 8081:80
+volumes:
+  todo_data_test: {}

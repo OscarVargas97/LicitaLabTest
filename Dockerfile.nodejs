@@ -3,17 +3,18 @@ WORKDIR /myapp
 RUN apk apk update && apk upgrade && apk update
 COPY Server/package.json ./
 RUN npm install && npm cache clean --force
+COPY Server/. .
+#Correr la migracion
 ##############################Prod##############################
 FROM base as production
-COPY  ./Server/ .
 RUN npm run tsc
+RUN rm -r ./src
+COPY Server/src/db/migrations ./build/db/migrations
 ENV NODE_ENV=production
 EXPOSE 3000
-CMD [ "node", "src/app.js" ]
+CMD [ "node", "build/app.js" ]
 ##############################Dev##############################
 FROM base as development
-COPY ./Server/tsconfig.json .
-COPY ./Server/src ./src
 ENV NODE_ENV=development
 EXPOSE 3000
 CMD [ "npm", "run", "dev" ]
