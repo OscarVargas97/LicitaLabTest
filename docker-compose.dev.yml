@@ -17,7 +17,9 @@ services:
     build:
       target: development
     volumes:
-      - ./Client:/myapp:z
+      - ./Client/todo/src:/myapp/src:z
+      - ./Client/todo/public:/myapp/public:z
+      - ./Client/todo/build:/myapp/build:z
   mysql:
     environment:
       MYSQL_DATABASE: ${DD_TEST_DATABASE_NAME}
