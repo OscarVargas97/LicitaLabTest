@@ -1,0 +1,35 @@
+.body {
+	border: #333 5px solid;
+	background-Color: #fff;
+	color: #0A283E;
+	align-Items: center;
+	margin: 0 auto;
+	flex-Direction: column;
+	margin-bottom: 30px;
+
+}
+
+.container {
+	display: flex;
+	height: 100px;
+	align-items: center;
+	justify-content: space-around;
+	flex-direction: row;
+}
+
+.items {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+	align-items: center;
+}
+
+@media only screen and (max-width: 620px) {
+	.container {
+		display: flex;
+		height: 100px;
+		align-items: center;
+		flex-Direction: column;
+		justify-content: space-around;
+	}
+}

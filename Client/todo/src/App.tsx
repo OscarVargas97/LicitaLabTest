@@ -1,20 +1,14 @@
-import React from 'react';
-import './App.css';
-import CharCounter from "./Components/common/CharCounter";
-import Layout from "./Components/layout/Layout";
+import { Counter } from './Components/counter/Counter'
+import Layout from './Components/layout/base/Layout'
+import Navbar from './Components/layout/navbar/Navbar'
+import Todo from './Components/todo/Todo'
 
-const query = [['character', "c"], ['location', "l"], ['episode', "e"]]
-
-
-function App() {
+const App = () => {
 	return (
 		<Layout>
-			{query.map(q => {
-				let [apiQuery, charFind] = q
-				return <CharCounter key={charFind} charFind={charFind} apiQuery={apiQuery}></CharCounter>
-			})}
+			<Todo />
 		</Layout>
-	);
+	)
 }
 
-export default App;
+export default App
