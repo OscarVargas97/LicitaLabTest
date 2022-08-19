@@ -18,7 +18,7 @@ cd LicitaLabTest
 Ahora hay que dirigirse a  [http://localhost:3000](http://localhost:3000)
 
 ## Enunciado
-Puedes leer el enunciado de la prueba técnica [aquí](docs/test.md)
+Puedes leer el enunciado de la prueba técnica [aquí](Docs/test.md)
 
 ## Docs
 

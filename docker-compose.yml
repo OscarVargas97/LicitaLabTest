@@ -5,6 +5,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.react
+      target: base
     container_name: react
     image: "react-todo"
     depends_on:
@@ -18,6 +19,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.nodejs
+      target: base
     container_name: nodejs
     image: "nodejs-todo"
     environment:
